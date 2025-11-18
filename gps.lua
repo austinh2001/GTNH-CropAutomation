@@ -2,6 +2,7 @@ local robot = require('robot')
 local config = require('config')
 local nowFacing = 1
 local nowPos = {0, 0}
+local nowHeight = 0
 local savedPos = {}
 
 -- ======================== WORKING FARM ========================
@@ -65,6 +66,11 @@ end
 
 local function getPos()
     return nowPos
+end
+
+
+local function getHeight()
+    return nowHeight
 end
 
 
@@ -144,6 +150,7 @@ local function down(distance)
     end
     for _=1, distance do
         robot.down()
+        nowHeight = nowHeight - 1
     end
 end
 
@@ -154,12 +161,13 @@ local function up(distance)
     end
     for _=1, distance do
         robot.up()
+        nowHeight = nowHeight + 1
     end
 end
 
 
 local function save()
-    savedPos[#savedPos+1] = nowPos
+    savedPos[#savedPos+1] = {pos = {nowPos[1], nowPos[2]}, height = nowHeight}
 end
 
 
@@ -167,8 +175,48 @@ local function resume()
     if #savedPos == 0 then
         return
     end
-    go(savedPos[#savedPos])
+    local saved = savedPos[#savedPos]
     savedPos[#savedPos] = nil
+
+    local heightDelta = saved.height - nowHeight
+    if heightDelta > 0 then
+        up(heightDelta)
+    elseif heightDelta < 0 then
+        down(-heightDelta)
+    end
+
+    go(saved.pos)
+end
+
+
+local function worldToRelative(pos)
+    local relX = pos[1] - config.actualChargerPos[1]
+    local relZ = pos[3] - config.actualChargerPos[3]
+    local relY = pos[2] - config.actualChargerPos[2]
+
+    return {relX, relZ}, relY
+end
+
+
+local function relativeToWorld(pos, height)
+    local worldX = config.actualChargerPos[1] + pos[1]
+    local worldY = config.actualChargerPos[2] + (height or 0)
+    local worldZ = config.actualChargerPos[3] + pos[2]
+
+    return {worldX, worldY, worldZ}
+end
+
+
+local function goWorld(pos)
+    local relPos, targetHeight = worldToRelative(pos)
+
+    if targetHeight > nowHeight then
+        up(targetHeight - nowHeight)
+    elseif targetHeight < nowHeight then
+        down(nowHeight - targetHeight)
+    end
+
+    go(relPos)
 end
 
 
@@ -177,10 +225,14 @@ return {
     storageSlotToPos = storageSlotToPos,
     getFacing = getFacing,
     getPos = getPos,
+    getHeight = getHeight,
     turnTo = turnTo,
     go = go,
+    goWorld = goWorld,
     save = save,
     resume = resume,
     down = down,
-    up = up
+    up = up,
+    worldToRelative = worldToRelative,
+    relativeToWorld = relativeToWorld
 }
