@@ -38,7 +38,7 @@ local config = {
 
     -- =========== DO NOT CHANGE ===========
     -- The actual 2D coordinate for the charger
-    actualChargerPos = {11, 10}
+    actualChargerPos = {11, 125, 10}
     -- The relative coordinate for the charger
     chargerPos = {0, 0},
     -- The relative coordinate for the crop stick container
