@@ -47,7 +47,7 @@ local config = {
     -- The coordinate for the farmland that the dislocator is facing
     relayFarmlandPos = {1, 6},
     -- The coordinate for the transvector dislocator
-    dislocatorPos = {1, 2},
+    dislocatorPos = {1, 7},
 
     -- The slot for the spade
     spadeSlot = 0,
