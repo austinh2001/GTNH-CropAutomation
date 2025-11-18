@@ -191,7 +191,7 @@ end
 
 local function worldToRelative(pos)
     local relX = config.actualChargerPos[1] - pos[1]
-    local relZ = config.actualChargerPos[3] - pos[3]
+    local relZ = pos[3] - config.actualChargerPos[3]
     local relY = pos[2] - config.actualChargerPos[2]
 
     return {relX, relZ}, relY
