@@ -55,7 +55,7 @@ local function storageSlotToPos(slot)
     offset = config.storageFarmCornerPos
     x_offset = offset[1]
     y_offset = offset[2]
-    return {x + x_offset, y + y_offset + 2}
+    return {x + x_offset, y + y_offset - 2}
 end
 
 
