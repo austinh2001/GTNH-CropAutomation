@@ -45,7 +45,7 @@ local config = {
     -- The coordinate for the storage chest / trash can
     storagePos = {-2, 0},
     -- The coordinate for the farmland that the dislocator is facing
-    relayFarmlandPos = {1, 1},
+    relayFarmlandPos = {6, 1},
     -- The coordinate for the transvector dislocator
     dislocatorPos = {1, 2},
 
