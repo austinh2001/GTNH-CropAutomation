@@ -211,7 +211,6 @@ end
 
 local function goWorld(pos)
     local relPos, targetHeight = worldToRelative(pos)
-    print("Going to world pos:", pos[1], pos[2], pos[3], "=> rel pos:", relPos[1], relPos[2], "height:", targetHeight)
     if targetHeight > nowHeight then
         up(targetHeight - nowHeight)
     elseif targetHeight < nowHeight then
