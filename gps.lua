@@ -145,6 +145,7 @@ end
 
 
 local function down(distance)
+    go(config.dislocatorPos)
     if distance == nil then
         distance = 1
     end
@@ -156,6 +157,7 @@ end
 
 
 local function up(distance)
+    go(config.dislocatorPos)
     if distance == nil then
         distance = 1
     end
