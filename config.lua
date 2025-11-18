@@ -37,18 +37,19 @@ local config = {
     maxBreedRound = 1000,
 
     -- =========== DO NOT CHANGE ===========
-
-    -- The coordinate for the charger
+    -- The actual 2D coordinate for the charger
+    actualChargerPos = {11, 10}
+    -- The relative coordinate for the charger
     chargerPos = {0, 0},
-    -- The coordinate for the crop stick container
+    -- The relative coordinate for the crop stick container
     stickContainerPos = {-1, 0},
-    -- The coordinate for the storage chest / trash can
+    -- The relative coordinate for the storage chest / trash can
     storagePos = {-2, 0},
-    -- The coordinate for the farmland that the dislocator is facing
+    -- The relative coordinate for the farmland that the dislocator is facing
     relayFarmlandPos = {1, 6},
-    -- The coordinate for the transvector dislocator
+    -- The relative coordinate for the transvector dislocator
     dislocatorPos = {1, 7},
-    -- The coordinate for the bottom left corner of the storage farm
+    -- The relative coordinate for the bottom left corner of the storage farm
     storageFarmCornerPos = {6, 1},
 
     -- The slot for the spade
