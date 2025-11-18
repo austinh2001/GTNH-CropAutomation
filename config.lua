@@ -58,8 +58,10 @@ local config = {
     binderSlot = -1,
     -- The slot for crop sticks
     stickSlot = -2,
+    -- The slot for the Thaumcraft wand
+    wandSlot = -3,
     -- The slot which the robot will stop storing items
-    storageStopSlot = -3
+    storageStopSlot = -4
 }
 
 config.workingFarmArea = config.workingFarmSize^2

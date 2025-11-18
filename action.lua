@@ -181,37 +181,14 @@ end
 local function transplantWorld(src, dest)
     local selectedSlot = robot.select()
     gps.save()
-    robot.select(robot.inventorySize() + config.binderSlot)
+    robot.select(robot.inventorySize() + config.wandSlot)
     inventory_controller.equip()
 
     gps.goWorld(src)
     robot.useDown(sides.down, true)
-    gps.goWorld(gps.relativeToWorld(config.dislocatorPos))
-    pulseDown()
 
-    robot.useDown(sides.down, true)
     gps.goWorld(dest)
-
-    local crop = scanner.scan()
-    if crop.name == 'air' then
-        placeCropStick()
-
-    elseif crop.isCrop == false then
-        database.addToStorage(crop)
-        gps.goWorld(gps.relativeToWorld(gps.storageSlotToPos(database.nextStorageSlot())))
-        placeCropStick()
-    end
-
     robot.useDown(sides.down, true)
-    gps.goWorld(gps.relativeToWorld(config.dislocatorPos))
-    pulseDown()
-
-    robot.useDown(sides.down, true)
-
-    inventory_controller.equip()
-    gps.goWorld(gps.relativeToWorld(config.relayFarmlandPos))
-    robot.swingDown()
-    robot.suckDown()
 
     gps.resume()
     robot.select(selectedSlot)
