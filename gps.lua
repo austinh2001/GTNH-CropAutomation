@@ -42,7 +42,7 @@ end
 --  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 local function storageSlotToPos(slot)
-    local x = (slot - 1) // config.storageFarmSize + 2
+    local x = (slot - 1) // config.storageFarmSize
     local row = (slot - 1) % config.storageFarmSize
     local y
 
@@ -51,8 +51,10 @@ local function storageSlotToPos(slot)
     else
         y = -row + config.workingFarmSize
     end
-
-    return {x, y}
+    offset = config.storageFarmCornerPos
+    x_offset = offset[1]
+    y_offset = offset[2]
+    return {x + x_offset, y + y_offset + 2}
 end
 
 
