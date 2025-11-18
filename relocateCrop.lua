@@ -3,8 +3,7 @@ local action = require('action')
 -- Usage: relocateCrop.lua <srcX> <srcY> <srcZ> <dstX> <dstY> <dstZ>
 -- Moves a crop at the given world coordinates to another world coordinate.
 
-local function parseArgs()
-    local args = {...}
+local function parseArgs(args)
 
     if #args ~= 6 then
         return nil, nil, 'Usage: relocateCrop.lua <srcX> <srcY> <srcZ> <dstX> <dstY> <dstZ>'
@@ -21,8 +20,8 @@ local function parseArgs()
     return {coords[1], coords[2], coords[3]}, {coords[4], coords[5], coords[6]}, nil
 end
 
-local function main()
-    local src, dst, err = parseArgs()
+local function main(...)
+    local src, dst, err = parseArgs({...})
     if err ~= nil then
         print(err)
         return
@@ -35,4 +34,4 @@ local function main()
     print('Relocation complete!')
 end
 
-main()
+main(...)
