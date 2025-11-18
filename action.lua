@@ -186,7 +186,7 @@ local function transplantWorld(src, dest)
 
     gps.goWorld(src)
     robot.useDown(sides.down, true)
-    gps.goWorld(gps.relativeToWorld(config.dislocatorPos))
+    gps.go(config.dislocatorPos)
     pulseDown()
 
     robot.useDown(sides.down, true)
@@ -198,18 +198,18 @@ local function transplantWorld(src, dest)
 
     elseif crop.isCrop == false then
         database.addToStorage(crop)
-        gps.goWorld(gps.relativeToWorld(gps.storageSlotToPos(database.nextStorageSlot())))
+        gps.go(gps.storageSlotToPos(database.nextStorageSlot()))
         placeCropStick()
     end
 
     robot.useDown(sides.down, true)
-    gps.goWorld(gps.relativeToWorld(config.dislocatorPos))
+    gps.go(config.dislocatorPos)
     pulseDown()
 
     robot.useDown(sides.down, true)
 
     inventory_controller.equip()
-    gps.goWorld(gps.relativeToWorld(config.relayFarmlandPos))
+    gps.go(config.relayFarmlandPos)
     robot.swingDown()
     robot.suckDown()
 
