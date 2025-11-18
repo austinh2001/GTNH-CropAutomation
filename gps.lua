@@ -199,7 +199,7 @@ end
 
 
 local function relativeToWorld(pos, height)
-    local worldX = config.actualChargerPos[1] + pos[1]
+    local worldX = config.actualChargerPos[1] - pos[1]
     local worldY = config.actualChargerPos[2] + (height or 0)
     local worldZ = config.actualChargerPos[3] + pos[2]
 
