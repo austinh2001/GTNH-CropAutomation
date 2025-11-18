@@ -48,6 +48,8 @@ local config = {
     relayFarmlandPos = {1, 6},
     -- The coordinate for the transvector dislocator
     dislocatorPos = {1, 7},
+    -- The coordinate for the bottom left corner of the storage farm
+    storageFarmCornerPos = {6, 1},
 
     -- The slot for the spade
     spadeSlot = 0,
