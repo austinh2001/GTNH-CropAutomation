@@ -183,7 +183,7 @@ local function transplantWorld(src, dest)
 
     gps.go(config.wandRechargerPos)
     -- Select wand
-    local selectedSlot = robot.select(robot.inventorySize() + config.wandSlot)
+    robot.select(robot.inventorySize() + config.wandSlot)
 
     -- Put the wand into the recharger hopper using the inventory controller
     inventory_controller.dropIntoSlot(sides.up, 1)
