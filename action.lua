@@ -187,11 +187,8 @@ local function transplantWorld(src, dest)
     robot.select(robot.inventorySize() + config.wandSlot)
 
     -- Deposit wand for charging
-    for i=1, inventory_controller.getInventorySize(sides.up) do
-        inventory_controller.dropIntoSlot(sides.up, i)
-        print(string.format("Attempted dropoff into slot %d", i))
-    end
-
+    inventory_controller.dropIntoSlot(sides.up, 11)
+    
     gps.turnTo(1) -- Face the wand recharger
 
     os.sleep(10)  -- Wait for wand to charge
