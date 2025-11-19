@@ -186,9 +186,8 @@ local function transplantWorld(src, dest)
     robot.select(robot.inventorySize() + config.wandSlot)
     inventory_controller.equip()
 
-    print(string.format('Inventory size of wand recharger: %d', inventory_controller.getInventorySize(sides.up)))
-
-    inventory_controller.dropIntoSlot(sides.up, 1)
+    -- Deposit wand for charging
+    inventory_controller.dropIntoSlot(sides.up, 10)
 
 
     gps.turnTo(1) -- Face the wand recharger
