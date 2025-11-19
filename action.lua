@@ -187,7 +187,7 @@ local function transplantWorld(src, dest)
     inventory_controller.equip()
 
     -- Click on wand recharger
-    robot.useDown(sides.down, true)
+    robot.useDown(sides.down, false)
 
     gps.turnTo(1)
     os.sleep(10)  -- Wait for wand to charge
