@@ -192,7 +192,7 @@ local function transplantWorld(src, dest)
 
     os.sleep(10)  -- Wait for wand to charge
 
-    robot.useDown(sides.down, true)
+    inventory_controller.suckFromSlot(sides.down, 1, robot.inventorySize() + config.wandSlot)  -- Retrieve the wand
 
     inventory_controller.equip()
     robot.select(selectedSlot)
