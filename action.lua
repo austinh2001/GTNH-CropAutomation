@@ -195,6 +195,7 @@ local function transplantWorld(src, dest)
     inventory_controller.suckFromSlot(sides.up, 1, 1)  -- Retrieve the wand
 
     inventory_controller.equip()
+    robot.select(selectedSlot)
 
     gps.goWorld(src)
     robot.useDown(sides.down, true)
@@ -204,7 +205,6 @@ local function transplantWorld(src, dest)
 
     gps.resume()
     robot.select(selectedSlot)
-    inventory_controller.equip()
 end
 
 
