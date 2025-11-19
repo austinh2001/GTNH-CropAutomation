@@ -204,7 +204,6 @@ local function transplantWorld(src, dest)
     robot.useDown(sides.down, true)
 
     gps.resume()
-    inventory_controller.equip()
     robot.select(selectedSlot)
 end
 
