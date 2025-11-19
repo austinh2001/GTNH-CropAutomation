@@ -191,11 +191,10 @@ local function transplantWorld(src, dest)
     -- Move to wand recharger and wait for charge
     gps.go(config.wandRechargerPos)
 
-    gps.turnTo(1)
     os.sleep(10)  -- Wait for wand to charge
 
     -- Re-equip wand from recharger
-    robot.useDown(sides.down, true)
+    robot.useDown(sides.down)
 
     inventory_controller.equip()
     robot.select(selectedSlot)
