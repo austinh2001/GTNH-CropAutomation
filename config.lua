@@ -45,6 +45,8 @@ local config = {
     stickContainerPos = {-1, 0},
     -- The relative 2D coordinate for the storage chest / trash can
     storagePos = {-2, 0},
+    -- The relative 2D coordinate for thE wand recharger
+    wandRechargerPos = {1, 5},
     -- The relative 2D coordinate for the farmland that the dislocator is facing
     relayFarmlandPos = {1, 6},
     -- The relative 2D coordinate for the transvector dislocator

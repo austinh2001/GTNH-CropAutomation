@@ -184,6 +184,8 @@ local function transplantWorld(src, dest)
     robot.select(robot.inventorySize() + config.wandSlot)
     inventory_controller.equip()
 
+    chargeWand()
+
     gps.goWorld(src)
     robot.useDown(sides.down, true)
 
@@ -249,6 +251,25 @@ local function charge()
             os.exit() -- Exit here to leave robot in starting position
         end
     until fullyCharged()
+end
+
+local function chargeWand()
+    gps.go(config.wandRechargerPos)
+    -- Equip wand if not already equipped
+    local selectedSlot = robot.select(robot.inventorySize() + config.wandSlot)
+    inventory_controller.equip()
+
+    -- Click on wand recharger
+    robot.useDown()
+
+    gps.turnTo(1)
+    os.sleep(10)  -- Wait for wand to charge
+
+    -- Re-equip wand from recharger
+    robot.useDown()
+
+    inventory_controller.equip()
+    robot.select(selectedSlot)
 end
 
 
