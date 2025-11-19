@@ -208,7 +208,7 @@ local function transplantWorld(src, dest)
     robot.select(robot.inventorySize() + config.wandSlot)
     inventory_controller.equip()
 
-    robot.select()
+    robot.select(1)
 end
 
 
