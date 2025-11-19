@@ -202,8 +202,8 @@ local function transplantWorld(src, dest)
 
     gps.resume()
     
+    robot.select(robot.inventorySize() + config.wandSlot)
     inventory_controller.equip()
-    robot.select(selectedSlot)
 end
 
 
