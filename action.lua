@@ -196,8 +196,8 @@ local function transplantWorld(src, dest)
     gps.go(config.wandRechargerPos)
     
     -- Re-equip wand from recharger
-    robot.useDown(sides.down)
     robot.suckDown()
+    --robot.useDown(sides.down, true)
 
     inventory_controller.equip()
     robot.select(selectedSlot)
