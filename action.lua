@@ -186,7 +186,7 @@ local function transplantWorld(src, dest)
     robot.select(robot.inventorySize() + config.wandSlot)
     inventory_controller.equip()
 
-    print(inventory_controller.getInventorySize(sides.up))
+    print(string.format('Inventory size of wand recharger: %d', inventory_controller.getInventorySize(sides.up)))
 
     inventory_controller.dropIntoSlot(sides.up, 1)
 
