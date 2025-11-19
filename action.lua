@@ -177,7 +177,10 @@ local function transplant(src, dest)
     robot.select(selectedSlot)
 end
 
-local function chargeWand()
+local function transplantWorld(src, dest)
+    local selectedSlot = robot.select()
+    gps.save()
+
     gps.go(config.wandRechargerPos)
     -- Equip wand if not already equipped
     local selectedSlot = robot.select(robot.inventorySize() + config.wandSlot)
@@ -194,15 +197,6 @@ local function chargeWand()
 
     inventory_controller.equip()
     robot.select(selectedSlot)
-end
-
-local function transplantWorld(src, dest)
-    local selectedSlot = robot.select()
-    gps.save()
-    robot.select(robot.inventorySize() + config.wandSlot)
-    inventory_controller.equip()
-
-    chargeWand()
 
     gps.goWorld(src)
     robot.useDown(sides.down, true)
