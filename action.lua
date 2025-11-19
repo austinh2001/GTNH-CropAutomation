@@ -182,17 +182,18 @@ local function transplantWorld(src, dest)
     gps.save()
 
     gps.go(config.wandRechargerPos)
+
     -- Select wand
     robot.select(robot.inventorySize() + config.wandSlot)
 
     -- Deposit wand for charging
-    inventory_controller.dropIntoSlot(sides.up, 10)
+    inventory_controller.dropIntoSlot(sides.up, 11)
 
     gps.turnTo(1) -- Face the wand recharger
 
     os.sleep(10)  -- Wait for wand to charge
 
-    inventory_controller.suckFromSlot(sides.up, 10, 1)  -- Retrieve the wand
+    inventory_controller.suckFromSlot(sides.up, 11, 1)  -- Retrieve the wand
 
     inventory_controller.equip()
 
