@@ -188,10 +188,10 @@ local function transplantWorld(src, dest)
     -- Put the wand into the recharger hopper using the inventory controller
     inventory_controller.dropIntoSlot(sides.down, 1)
 
+    os.sleep(10)  -- Wait for wand to charge
+
     -- Move to wand recharger and wait for charge
     gps.go(config.wandRechargerPos)
-
-    os.sleep(10)  -- Wait for wand to charge
 
     -- Re-equip wand from recharger
     robot.useDown(sides.down)
