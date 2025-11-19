@@ -190,7 +190,6 @@ local function transplantWorld(src, dest)
     for i=1, inventory_controller.getInventorySize(sides.up) do
             inventory_controller.dropIntoSlot(sides.up, i)
             print(string.format("Attempted dropoff into slot %d", i))
-        end
     end
 
     gps.turnTo(1) -- Face the wand recharger
