@@ -188,7 +188,8 @@ local function transplantWorld(src, dest)
 
     -- Click on wand recharger
     robot.useDown()
-
+    robot.useDown()
+    
     gps.turnTo(1)
     os.sleep(10)  -- Wait for wand to charge
 
