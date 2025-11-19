@@ -189,12 +189,11 @@ local function transplantWorld(src, dest)
     -- Deposit wand for charging
     inventory_controller.dropIntoSlot(sides.up, 10)
 
-
     gps.turnTo(1) -- Face the wand recharger
 
     os.sleep(10)  -- Wait for wand to charge
 
-    inventory_controller.suckFromSlot(sides.up, 1, 1)  -- Retrieve the wand
+    inventory_controller.suckFromSlot(sides.up, 10, 1)  -- Retrieve the wand
 
     gps.goWorld(src)
     robot.useDown(sides.down, true)
