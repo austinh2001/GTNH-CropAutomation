@@ -186,8 +186,10 @@ local function transplantWorld(src, dest)
     robot.select(robot.inventorySize() + config.wandSlot)
     inventory_controller.equip()
 
-    -- Put the wand into the recharger hopper using the inventory controller
-    inventory_controller.dropIntoSlot(sides.up, 0)
+    print(inventory_controller.getInventorySize(sides.up))
+
+    inventory_controller.dropIntoSlot(sides.up, 1)
+
 
     gps.turnTo(1) -- Face the wand recharger
 
