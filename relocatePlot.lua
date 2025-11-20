@@ -11,8 +11,8 @@ local function parseArgs(args)
         return nil, nil, 'Usage: relocatePlot.lua <srcIndex> <dstIndex>'
     end
     -- convert to numbers
-    src = tonumber(src)
-    dst = tonumber(dst)
+    src = tonumber(args[1])
+    dst = tonumber(args[2])
 
     return src, dst, nil
 end
