@@ -196,12 +196,24 @@ local function transplantWorld(src, dest)
     inventory_controller.suckFromSlot(sides.up, 11, 1)  -- Retrieve the wand
 
     inventory_controller.equip()
+    
+    local pickedUpCrop = false
 
     gps.goWorld(src)
-    robot.useDown(sides.down, true)
+    local crop = scanner.scan()
+    if crop.name ~= 'air' then
+        robot.useDown(sides.down, true)
+        pickedUpCrop = true
+    end
 
     gps.goWorld(dest)
-    robot.useDown(sides.down, true)
+    local crop = scanner.scan()
+    if crop.name == 'air' then
+        robot.useDown(sides.down, true)
+    elseif pickedUpCrop then
+        gps.goWorld(src)
+        robot.useDown(sides.down, true)
+    end
 
     gps.resume()
 
