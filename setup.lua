@@ -13,6 +13,7 @@ local scripts = {
     'autoTier.lua',
     'autoSpread.lua',
     'relocateCrop.lua',
+    'relocatePlot.lua',
     'uninstall.lua'
 }
 
