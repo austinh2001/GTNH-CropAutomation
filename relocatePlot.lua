@@ -26,7 +26,7 @@ local function main(...)
     end
 
     print(string.format('Relocating plot from index %d to index %d...', src, dst))
-    for slot=1, config.storageFarmArea, 1 do
+    for slot=1, config.storageFarmArea do
         -- check if there is a crop to relocate
         local crop = scanner.scan()
         if crop.name ~= 'air' then
