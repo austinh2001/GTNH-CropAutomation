@@ -277,8 +277,8 @@ function getPlotOriginPos(id)
     local height = config.actualChargerPos[2]
 
     
-    -- If id is 0 through 4, height remains the same otherwise it is height + 7
-    if id >= 5 then
+    -- If id is 0 through 3, height remains the same otherwise it is height + 7
+    if id >= 4 then
         height = height + 7
     end
 
