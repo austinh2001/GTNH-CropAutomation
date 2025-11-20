@@ -211,7 +211,7 @@ local function transplantWorld(src, dest)
         local crop = scanner.scan()
         if crop.name == 'air' then
                 robot.useDown(sides.down, true)
-        else then
+        else
             gps.goWorld(src)
             robot.useDown(sides.down, true)
         end
