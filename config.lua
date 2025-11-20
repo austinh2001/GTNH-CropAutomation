@@ -56,6 +56,9 @@ local config = {
     -- The relative 2D coordinate for the bottom left corner of the storage farm
     storageFarmCornerPos = {6, 1},
 
+    -- Plot Indices
+    storagePlotIndex = 1,
+
     -- The slot for the spade
     spadeSlot = 0,
     -- The slot for the transvector binder

@@ -220,6 +220,85 @@ local function goWorld(pos)
     go(relPos)
 end
 
+-- Spiral grid: 0 at (0,0), 1 to the right, 2 below 1, 3 left of 2, etc.
+local function spiralGrid(id)
+    if id == 0 then
+        return 0, 0
+    end
+
+    local x, y = 0, 0    -- grid coords
+    local n = 0          -- current ID
+    local stepLen = 1
+
+    -- Directions in grid coords:
+    -- +x = right, +y = up
+    -- but we use down as -y here
+    local dirs = {
+        { 1,  0},  -- right
+        { 0, -1},  -- down
+        {-1,  0},  -- left
+        { 0,  1},  -- up
+    }
+    local dirIndex = 1
+
+    while true do
+        -- steps go: 1,1,2,2,3,3,...
+        for _ = 1, 2 do
+            local dx, dy = dirs[dirIndex][1], dirs[dirIndex][2]
+            for _ = 1, stepLen do
+                x = x + dx
+                y = y + dy
+                n = n + 1
+
+                if n == id then
+                    return x, y
+                end
+            end
+            dirIndex = (dirIndex % 4) + 1
+        end
+        stepLen = stepLen + 1
+    end
+end
+
+-- Returns {x_world, y_world} with:
+-- - center of ID 0 at (16,16)
+-- - moving right decreases x ( -x is to the right )
+function getPlotOriginPos(id)
+    local STEP = config.storageFarmSize + 5
+    local gx, gy = spiralGrid(id)   -- integer grid coords
+    local xs = gx * STEP            -- spiral_x
+    local ys = gy * STEP            -- spiral_y
+
+    local x_world = 16 - xs
+    local y_world = 16 + ys
+
+    local x_offset = config.storageFarmSize // 2
+    local y_offset = config.storageFarmSize // 2
+    local height = config.actualChargerPos[2]
+
+    
+    -- If id is 0 through 4, height remains the same otherwise it is height + 7
+    if id >= 5 then
+        height = height + 7
+    end
+
+    return { x_world - x_offset, height, y_world - y_offset}
+end
+
+local function plotIndexToPos(plot_index, slot)
+    local x = (slot - 1) // config.storageFarmSize
+    local row = (slot - 1) % config.storageFarmSize
+    local y
+
+    if x % 2 == 0 then
+        y = row + 1
+    else
+        y = -row + config.storageFarmSize
+    end
+    offset = getPlotOriginPos(plot_index)
+    x_offset = offset[1]
+    y_offset = offset[2]
+    return {x + x_offset, y + y_offset - 1}
 
 return {
     workingSlotToPos = workingSlotToPos,

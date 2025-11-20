@@ -211,7 +211,6 @@ local function transplantWorld(src, dest)
     robot.select(selectedSlot)
 end
 
-
 function cleanUp()
     for slot=1, config.workingFarmArea, 1 do
         -- Scan
