@@ -33,6 +33,8 @@ local function main(...)
         if crop.name ~= 'air' then
             src_pos = gps.plotIndexToPos(src, slot)
             dst_pos = gps.plotIndexToPos(dst, slot)
+            -- print the values of src_pos and dst_pos for debugging
+            print(string.format('Relocating slot %d from (%d, %d) to (%d, %d)', slot, src_pos[1], src_pos[2], dst_pos[1], dst_pos[2]))
             action.transplantWorld(src_pos, dst_pos)
         end
     end
