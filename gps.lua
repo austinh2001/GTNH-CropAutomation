@@ -315,5 +315,9 @@ return {
     down = down,
     up = up,
     worldToRelative = worldToRelative,
-    relativeToWorld = relativeToWorld
+    relativeToWorld = relativeToWorld,
+    goWorld = goWorld,
+    spiralGrid = spiralGrid,
+    getPlotOriginPos = getPlotOriginPos,
+    plotIndexToPos = plotIndexToPos
 }
