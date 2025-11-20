@@ -10,14 +10,16 @@ local function parseArgs(args)
     if #args ~= 2 then
         return nil, nil, 'Usage: relocatePlot.lua <srcIndex> <dstIndex>'
     end
+    -- convert to numbers
+    src = tonumber(src)
+    dst = tonumber(dst)
+
+    return src, dst, nil
 end
 
 local function main(...)
     local src, dst, err = parseArgs({...})
-    -- convert to numbers
-    src = tonumber(src)
-    dst = tonumber(dst)
-    
+
     if err ~= nil then
         print(err)
         return
