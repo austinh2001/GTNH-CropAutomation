@@ -1,4 +1,6 @@
 local action = require('action')
+local gps = require('gps')
+local scanner = require('scanner')
 
 -- Usage: relocatePlot.lua <srcIndex> <dstIndex>
 -- Moves a crop at the given plot index to another plot index. 
@@ -12,6 +14,10 @@ end
 
 local function main(...)
     local src, dst, err = parseArgs({...})
+    -- convert to numbers
+    src = tonumber(src)
+    dst = tonumber(dst)
+    
     if err ~= nil then
         print(err)
         return
