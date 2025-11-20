@@ -206,13 +206,15 @@ local function transplantWorld(src, dest)
         pickedUpCrop = true
     end
 
-    gps.goWorld(dest)
-    local crop = scanner.scan()
-    if crop.name == 'air' then
-        robot.useDown(sides.down, true)
-    elseif pickedUpCrop then
-        gps.goWorld(src)
-        robot.useDown(sides.down, true)
+    if pickedUpCrop then
+        gps.goWorld(dest)
+        local crop = scanner.scan()
+        if crop.name == 'air' then
+                robot.useDown(sides.down, true)
+        else then
+            gps.goWorld(src)
+            robot.useDown(sides.down, true)
+        end
     end
 
     gps.resume()
