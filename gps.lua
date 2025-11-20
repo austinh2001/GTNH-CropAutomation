@@ -297,8 +297,9 @@ local function plotIndexToPos(plot_index, slot)
     end
     offset = getPlotOriginPos(plot_index)
     x_offset = offset[1]
-    y_offset = offset[2]
-    return {x + x_offset, y + y_offset - 1}
+    height = offset[2]
+    y_offset = offset[3]
+    return {x + x_offset, height, y + y_offset - 1}
 end
 
 return {
